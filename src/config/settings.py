@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_spectacular',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist', # JWTのブラックリスト機能を使用する場合に必要
+    # 自作アプリケーション
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +143,12 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'LARM API',
     'DESCRIPTION': 'LARM API docs',
     'VERSION': '1.0.0',
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5), # アクセストークンの有効期限
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30), # リフレッシュトークンの有効期限
+    'ROTATE_REFRESH_TOKENS': True, # リフレッシュトークンのローテーション
+    'BLACKLIST_AFTER_ROTATION': True, # ローテーション後のリフレッシュトークンをブラックリストに追加
+    'AUTH_HEADER_TYPES': ('Bearer',), # 認証ヘッダーのタイプ
 }
