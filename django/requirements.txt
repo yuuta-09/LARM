@@ -6,3 +6,5 @@ psycopg2-binary
 openai
 uvicorn
 pillow
+drf-spectacular               # for OpenAPI schema generation
+djangorestframework-simplejwt # for Json Web Token authentication
