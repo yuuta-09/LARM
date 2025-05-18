@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist', # JWTのブラックリスト機能を使用する場合に必要
     # 自作アプリケーション
     'accounts',
+    'buttons',
 ]
 
 MIDDLEWARE = [
