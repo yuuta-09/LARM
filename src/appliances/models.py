@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+user = get_user_model()
 
 
 class Appliance(models.Model):
@@ -10,6 +13,12 @@ class Appliance(models.Model):
     manufacture_name = models.CharField(max_length=255, verbose_name='メーカー名')
     model_number = models.CharField(max_length=255, verbose_name='型番')
     image = models.ImageField(upload_to='appliances/', verbose_name='器具画像')
+    user = models.ForeignKey(
+        user,
+        on_delete=models.CASCADE,
+        related_name='appliances',
+        verbose_name='ユーザー'
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='更新日時')
     
