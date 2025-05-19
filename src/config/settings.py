@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 自作アプリケーション
     'accounts',
     'buttons',
+    'appliances',
 ]
 
 MIDDLEWARE = [
