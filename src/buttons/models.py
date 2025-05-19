@@ -6,6 +6,12 @@ class Button(models.Model):
     ボタンのモデル
     """
     name = models.CharField(max_length=255, verbose_name='ボタン名')
+    appliance = models.ForeignKey(
+        'appliances.Appliance',
+        on_delete=models.CASCADE,
+        related_name='buttons',
+        verbose_name='器具'
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='更新日時')
 
